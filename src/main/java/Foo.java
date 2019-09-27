@@ -4,5 +4,7 @@ public class Foo {
 
     public static void main(String[] args) {
         @NonNull Object ref = null;
+
+        ref.hashCode();
     }
 }
