@@ -75,6 +75,7 @@
     </build>
 
     <!-- using github.com/google/error-prone-javac is required when running on JDK 8 -->
+    <!-- https://groups.google.com/forum/#!searchin/checker-framework-discuss/NoSuchMethodError%7Csort:date/checker-framework-discuss/ -->
     <profiles>
         <profile>
             <id>jdk8</id>
