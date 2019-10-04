@@ -1,3 +1,5 @@
+package com.infosupport.checker.examples;
+
 import java.util.Optional;
 
 public class OptionalExamples {

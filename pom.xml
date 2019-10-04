@@ -58,18 +58,25 @@
                             <artifactId>checker</artifactId>
                             <version>2.11.0</version>
                         </path>
+                        <path>
+                            <groupId>com.infosupport</groupId>
+                            <artifactId>checkerframework</artifactId>
+                            <version>1.0-SNAPSHOT</version>
+                        </path>
                     </annotationProcessorPaths>
                     <annotationProcessors>
                         <!-- Add all the checkers you want to enable here -->
                         <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
                     </annotationProcessors>
                     <compilerArgs combine.children="append">
                         <!-- location of the annotated JDK, which comes from a Maven dependency -->
                         <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
                         <arg>-Alint=redundantNullComparison</arg>
                         <arg>-Alint=forbidnonnullarraycomponents</arg>
+                        <arg>-Aquals=com.infosupport.checker.qual.Encrypted,com.infosupport.checker.qual.PossiblyUnencrypted</arg>
                         <arg>-Awarns</arg>
                     </compilerArgs>
                 </configuration>

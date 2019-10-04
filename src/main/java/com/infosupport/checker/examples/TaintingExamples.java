@@ -1,3 +1,5 @@
+package com.infosupport.checker.examples;
+
 import org.checkerframework.checker.tainting.qual.Tainted;
 import org.checkerframework.checker.tainting.qual.Untainted;
 
