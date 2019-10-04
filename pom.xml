@@ -61,13 +61,13 @@
                     </annotationProcessorPaths>
                     <annotationProcessors>
                         <!-- Add all the checkers you want to enable here -->
-                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                         <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
                     </annotationProcessors>
                     <compilerArgs combine.children="append">
                         <!-- location of the annotated JDK, which comes from a Maven dependency -->
                         <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
-                        <!-- -Awarns turns type-checking warnings into errors. -->
-                        <!-- <arg>-Awarns</arg> -->
+                        <arg>-Alint=redundantNullComparison</arg>
+                        <arg>-Awarns</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>

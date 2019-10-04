@@ -1,0 +1,16 @@
+TODO:
+
+inspect Mobile Backend
+
+inspect setup Maven
+
+inspect setup IDE
+
+Chapter 31
+	Bean impl check
+	ConcurrentModificationException
+	
+3.3.7
+
+Annotating legacy code base
+	
