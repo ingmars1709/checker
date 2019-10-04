@@ -1,16 +1,20 @@
 TODO:
 
-inspect Mobile Backend
-
-inspect setup Maven
-
-inspect setup IDE
+@Encrypted / @Unencrypted
 
 Chapter 31
 	Bean impl check
 	ConcurrentModificationException
 	
+
+inspect Mobile Backend
+
+inspect setup Maven
+inspect setup IDE
+
+	
 3.3.7
 
 Annotating legacy code base
 	
+Comparison to other tools

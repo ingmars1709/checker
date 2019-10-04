@@ -61,12 +61,15 @@
                     </annotationProcessorPaths>
                     <annotationProcessors>
                         <!-- Add all the checkers you want to enable here -->
-                         <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
                     </annotationProcessors>
                     <compilerArgs combine.children="append">
                         <!-- location of the annotated JDK, which comes from a Maven dependency -->
                         <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
                         <arg>-Alint=redundantNullComparison</arg>
+                        <arg>-Alint=forbidnonnullarraycomponents</arg>
                         <arg>-Awarns</arg>
                     </compilerArgs>
                 </configuration>

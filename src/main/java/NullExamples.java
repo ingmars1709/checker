@@ -2,6 +2,9 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NullExamples {
 
     public static void main(String[] args) {
@@ -12,6 +15,11 @@ public class NullExamples {
         // @NonNull is default
         Object ref = null;
         ref.toString();
+
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("foo", 1);
+        myMap.put("bar", 2);
+        myMap.put("baz", null);
 
         //
 
@@ -31,9 +39,14 @@ public class NullExamples {
 
         @MonotonicNonNull Object lazyInitialized = null;
 
+        lazyInitialized.toString();
+
         lazyInitialized = new Object();
         lazyInitialized.toString();
 
         lazyInitialized = null;
+        lazyInitialized.toString();
+
+        //
     }
 }
