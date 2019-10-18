@@ -3,7 +3,9 @@ package com.infosupport.checker.examples;
 import com.infosupport.checker.qual.Encrypted;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 public class EncryptExamples {
 
@@ -23,6 +25,10 @@ public class EncryptExamples {
         example.decryptEncryptedData();
 
         example.decryptDecryptedData();
+
+        final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
+        ciphertexts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
+        ciphertexts.add(example.encrypt(CONFIDENTIAL_PLAIN_DATA));
     }
 
     private void sendEncryptedData() {
