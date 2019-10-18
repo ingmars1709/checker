@@ -30,55 +30,12 @@
     <build>
         <plugins>
             <plugin>
-                <!-- This plugin will set properties values using dependency information -->
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <fork>true</fork>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArguments>
-                        <Xmaxerrs>10000</Xmaxerrs>
-                        <Xmaxwarns>10000</Xmaxwarns>
-                    </compilerArguments>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.checkerframework</groupId>
-                            <artifactId>checker</artifactId>
-                            <version>2.11.0</version>
-                        </path>
-                        <path>
-                            <groupId>com.infosupport</groupId>
-                            <artifactId>checkerframework</artifactId>
-                            <version>1.0-SNAPSHOT</version>
-                        </path>
-                    </annotationProcessorPaths>
-                    <annotationProcessors>
-                        <!-- Add all the checkers you want to enable here -->
-                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
-                        <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
-                        <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
-                        <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
-                    </annotationProcessors>
-                    <compilerArgs combine.children="append">
-                        <!-- location of the annotated JDK, which comes from a Maven dependency -->
-                        <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
-                        <arg>-Alint=redundantNullComparison</arg>
-                        <arg>-Alint=forbidnonnullarraycomponents</arg>
-                        <arg>-Aquals=com.infosupport.checker.qual.Encrypted,com.infosupport.checker.qual.PossiblyUnencrypted</arg>
-                        <arg>-Awarns</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
@@ -88,9 +45,9 @@
     <!-- https://groups.google.com/forum/#!searchin/checker-framework-discuss/NoSuchMethodError%7Csort:date/checker-framework-discuss/ -->
     <profiles>
         <profile>
-            <id>jdk8</id>
+            <id>checker</id>
             <activation>
-                <jdk>1.8</jdk>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <javac.version>9+181-r4173-1</javac.version>
@@ -105,6 +62,58 @@
             <build>
                 <plugins>
                     <plugin>
+                        <!-- This plugin will set properties values using dependency information -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>properties</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.8.0</version>
+                        <configuration>
+                            <fork>true</fork>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                            <compilerArguments>
+                                <Xmaxerrs>10000</Xmaxerrs>
+                                <Xmaxwarns>10000</Xmaxwarns>
+                            </compilerArguments>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.checkerframework</groupId>
+                                    <artifactId>checker</artifactId>
+                                    <version>2.11.0</version>
+                                </path>
+                                <path>
+                                    <groupId>com.infosupport</groupId>
+                                    <artifactId>checkerframework</artifactId>
+                                    <version>1.0-SNAPSHOT</version>
+                                </path>
+                            </annotationProcessorPaths>
+                            <annotationProcessors>
+                                <!-- Add all the checkers you want to enable here -->
+                                <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                                <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
+                                <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
+                                <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
+                            </annotationProcessors>
+                            <compilerArgs combine.children="append">
+                                <!-- location of the annotated JDK, which comes from a Maven dependency -->
+                                <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
+                                <arg>-Alint=redundantNullComparison</arg>
+                                <arg>-Alint=forbidnonnullarraycomponents</arg>
+                                <arg>-Aquals=com.infosupport.checker.qual.Encrypted,com.infosupport.checker.qual.PossiblyUnencrypted</arg>
+                                <arg>-Awarns</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
@@ -118,5 +127,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>
