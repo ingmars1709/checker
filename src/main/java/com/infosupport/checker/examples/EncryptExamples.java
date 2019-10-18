@@ -7,53 +7,56 @@ import java.util.Base64;
 
 public class EncryptExamples {
 
-    private static final String UTF_8 = "UTF-8";
+    public static final Charset UTF_8_CHARSET = Charset.forName("UTF-8");
+
+    private static final String CONFIDENTIAL_PLAIN_DATA = "confidential data";
+    private static final byte[] CONFIDENTIAL_PLAIN_DATA_BYTES = CONFIDENTIAL_PLAIN_DATA.getBytes(UTF_8_CHARSET);
 
     public static void main(String[] args) {
-        EncryptExamples encryptExamples = new EncryptExamples();
+        EncryptExamples example = new EncryptExamples();
 
-        encryptExamples.sendEncryptedData();
-        encryptExamples.sendPassword();
-
-        @Encrypted byte[] cipherText = encryptExamples.encrypt("myPlainText");
-        System.out.println("plainText = " + new String(encryptExamples.decrypt(cipherText), Charset.forName(UTF_8)));
+        example.sendEncryptedData();
+        example.sendUnencryptedData();
+        example.decryptData();
     }
 
-    private void sendOverInternet(final @Encrypted byte[] ciphertext) {
-        Base64.getEncoder().encode(ciphertext);
+    private void decryptData() {
+        byte[] plaintext = decrypt(encrypt(CONFIDENTIAL_PLAIN_DATA));
+
+        System.out.println("decrypted plain text = " + new String(plaintext, UTF_8_CHARSET));
+
+        byte[] wrong = decrypt(CONFIDENTIAL_PLAIN_DATA_BYTES);
     }
 
     private void sendEncryptedData() {
-        @Encrypted byte[] ciphertext = encrypt("myPassword");
-        sendOverInternet(ciphertext);
+        @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
+        send(ciphertext);
+    }
+
+    private void sendUnencryptedData() {
+        send(CONFIDENTIAL_PLAIN_DATA_BYTES);
+    }
+
+    private void send(final @Encrypted byte[] ciphertext) {
+        System.out.println("sent: " + Base64.getEncoder().encodeToString(ciphertext));
     }
 
     @SuppressWarnings("encrypted") // type system does not inspect method body to see if actual encryption happens
     private @Encrypted byte[] encrypt(final String plaintext) {
-        byte[] bytesOfPlainText = plaintext.getBytes(Charset.forName(UTF_8));
-        byte[] bytesOfCipherText = new byte[bytesOfPlainText.length];
-
-        for (int i = 0; i < bytesOfPlainText.length; i++) {
-            bytesOfCipherText[i] = (byte) (bytesOfPlainText[i] ^ (byte) 3);
-        }
-        return bytesOfCipherText;
+        byte[] bytesOfPlainText = plaintext.getBytes(UTF_8_CHARSET);
+        return xorIt(bytesOfPlainText);
     }
 
     private byte[] decrypt(final @Encrypted byte[] ciphertext) {
-        byte[] bytesOfPlaintText = new byte[ciphertext.length];
+        return xorIt(ciphertext);
+    }
 
-        for (int i = 0; i < ciphertext.length; i++) {
-            bytesOfPlaintText[i] = (byte) (ciphertext[i] ^ (byte) 3);
+    private byte[] xorIt(final byte[] inputBytes) {
+        byte[] outputBytes = new byte[inputBytes.length];
+
+        for (int i = 0; i < inputBytes.length; i++) {
+            outputBytes[i] = (byte) (inputBytes[i] ^ (byte) 3);
         }
-        return bytesOfPlaintText;
-    }
-
-    private void sendPassword() {
-        byte[] password = getUserPassword();
-        sendOverInternet(password);
-    }
-
-    private byte[] getUserPassword() {
-        return "plaintextPassword".getBytes(Charset.forName(UTF_8));
+        return outputBytes;
     }
 }
