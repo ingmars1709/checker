@@ -26,10 +26,14 @@ public class EncryptExamples {
 
         example.decryptDecryptedData();
 
+        example.encryptEncryptedData();
+
         final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
         ciphertexts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
         ciphertexts.add(example.encrypt(CONFIDENTIAL_PLAIN_DATA));
     }
+
+
 
     private void sendEncryptedData() {
         @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
@@ -52,6 +56,10 @@ public class EncryptExamples {
 
     private void decryptDecryptedData() {
         byte[] wrong = decrypt(CONFIDENTIAL_PLAIN_DATA_BYTES);
+    }
+
+    private void encryptEncryptedData() {
+        byte[] twiceEncrypted = encrypt(new String(encrypt(CONFIDENTIAL_PLAIN_DATA), UTF8));
     }
 
     @SuppressWarnings("encrypted") // type system does not inspect method body to see if actual encryption happens
