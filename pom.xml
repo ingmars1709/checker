@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>jdk8</artifactId>
-            <version>2.11.0</version>
+            <version>2.11.1</version>
         </dependency>
         <dependency>
             <groupId>com.infosupport</groupId>
@@ -125,16 +125,6 @@
                             </compilerArgs>
                         </configuration>
                     </plugin>
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                        <!--<configuration>-->
-                            <!--<fork>true</fork>-->
-                            <!--<compilerArgs combine.children="append">-->
-                                <!--<arg>-J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${javac.version}/javac-${javac.version}.jar</arg>-->
-                            <!--</compilerArgs>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
                     <!-- 3rd party typestate checker JAR installation:-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
