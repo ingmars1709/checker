@@ -33,8 +33,6 @@ public class EncryptExamples {
         ciphertexts.add(example.encrypt(CONFIDENTIAL_PLAIN_DATA));
     }
 
-
-
     private void sendEncryptedData() {
         @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
         send(ciphertext);
