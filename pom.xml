@@ -107,6 +107,7 @@
                                 <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
+                                <annotationProcessor>com.infosupport.checker.typestate.TypestateChecker</annotationProcessor>
                             </annotationProcessors>
                             <compilerArgs combine.children="append">
                                 <!-- location of the annotated JDK, which comes from a Maven dependency -->
