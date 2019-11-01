@@ -1,4 +1,4 @@
-package com.infosupport.checker.checker;
+package com.infosupport.checker.typestate;
 
 import org.checkerframework.common.basetype.BaseTypeChecker;
 
