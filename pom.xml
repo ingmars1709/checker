@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-            <version>2.11.0</version>
+            <version>2.11.1</version>
         </dependency>
         <dependency>
             <groupId>org.checkerframework</groupId>
@@ -26,9 +26,9 @@
             <version>2.11.1</version>
         </dependency>
         <dependency>
-            <groupId>com.infosupport</groupId>
-            <artifactId>typestate-checker</artifactId>
-            <version>0.2.2</version>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker</artifactId>
+            <version>2.11.1</version>
         </dependency>
     </dependencies>
 
@@ -100,11 +100,6 @@
                                     <artifactId>checkerframework</artifactId>
                                     <version>1.0-SNAPSHOT</version>
                                 </path>
-                                <path>
-                                    <groupId>com.infosupport</groupId>
-                                    <artifactId>typestate-checker</artifactId>
-                                    <version>0.2.2</version>
-                                </path>
                             </annotationProcessorPaths>
                             <annotationProcessors>
                                 <!-- Add all the checkers you want to enable here -->
@@ -112,7 +107,6 @@
                                 <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
-                                <!--<annotationProcessor>checkers.typestate.TypestateChecker</annotationProcessor>-->
                             </annotationProcessors>
                             <compilerArgs combine.children="append">
                                 <!-- location of the annotated JDK, which comes from a Maven dependency -->
@@ -124,27 +118,6 @@
                                 <arg>-Awarns</arg>
                             </compilerArgs>
                         </configuration>
-                    </plugin>
-                    <!-- 3rd party typestate checker JAR installation:-->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-install-plugin</artifactId>
-                        <version>2.5.2</version>
-                        <executions>
-                            <execution>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>install-file</goal>
-                                </goals>
-                                <configuration>
-                                    <groupId>com.infosupport</groupId>
-                                    <artifactId>typestate-checker</artifactId>
-                                    <version>0.2.2</version>
-                                    <packaging>jar</packaging>
-                                    <file>${basedir}/typestate-checker.jar</file>
-                                </configuration>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
