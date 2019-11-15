@@ -30,6 +30,16 @@
             <artifactId>checker</artifactId>
             <version>2.11.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.infosupport</groupId>
+            <artifactId>typestate-checker</artifactId>
+            <version>0.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.infosupport</groupId>
+            <artifactId>legacy-checker-framework</artifactId>
+            <version>1.0.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -97,8 +107,18 @@
                                 </path>
                                 <path>
                                     <groupId>com.infosupport</groupId>
+                                    <artifactId>legacy-checker-framework</artifactId>
+                                    <version>1.0.4</version>
+                                </path>
+                                <path>
+                                    <groupId>com.infosupport</groupId>
                                     <artifactId>checkerframework</artifactId>
                                     <version>1.0-SNAPSHOT</version>
+                                </path>
+                                <path>
+                                    <groupId>com.infosupport</groupId>
+                                    <artifactId>typestate-checker</artifactId>
+                                    <version>0.2.2</version>
                                 </path>
                             </annotationProcessorPaths>
                             <annotationProcessors>
@@ -107,7 +127,7 @@
                                 <annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
                                 <annotationProcessor>org.checkerframework.common.subtyping.SubtypingChecker</annotationProcessor>
-                                <!--<annotationProcessor>com.infosupport.checker.typestate.TypestateChecker</annotationProcessor>-->
+                                <annotationProcessor>checkers.typestate.TypestateChecker</annotationProcessor>
                             </annotationProcessors>
                             <compilerArgs combine.children="append">
                                 <!-- location of the annotated JDK, which comes from a Maven dependency -->

@@ -10,17 +10,9 @@ public class PaymentExamples {
     }
 
     private void run() {
-
-//        stream(Payment.class.getDeclaredMethods()).forEach(
-//                m -> {
-//                    if (m.getAnnotatedReceiverType() != null) {
-//                    System.out.println(Arrays.toString(m.getAnnotatedReceiverType().getAnnotations()));
-//                    }});
-//
-//        Payment payment = Payment.create();
-//
+        Payment payment = Payment.create();
 //        payment.partlyApprove();
-//        payment.approve();
-//        payment.send();
+        payment.approve();
+
     }
 }
