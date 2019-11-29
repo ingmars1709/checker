@@ -1,7 +1,7 @@
 package com.infosupport.checker.examples;
 
-import java.util.Arrays;
-import static java.util.Arrays.stream;
+import com.infosupport.checker.qual.ApprovedPayment;
+import com.infosupport.checker.qual.ValidPayment;
 
 public class PaymentExamples {
 
@@ -10,9 +10,16 @@ public class PaymentExamples {
     }
 
     private void run() {
-        Payment payment = Payment.create();
-//        payment.partlyApprove();
-        payment.approve();
+        @ValidPayment Payment payment = Payment.createPayment(10);
 
+        payment.printStatus();
+
+        payment.send();
+
+        payment.approve().send();
+
+        final @ApprovedPayment Payment approvedPayment = payment.approve();
+        approvedPayment.printStatus();
+        approvedPayment.send();
     }
 }

@@ -1,26 +1,31 @@
 package com.infosupport.checker.examples;
 
-import com.infosupport.checker.examples.states.PaymentStates;
+import com.infosupport.checker.qual.ApprovedPayment;
+import com.infosupport.checker.qual.ValidPayment;
 
 public class Payment {
 
-    private Payment() {
+    private final Integer amount;
+    private boolean canBeProcessed;
+
+    private Payment(final boolean canBeProcessed, final Integer amount) {
+        this.canBeProcessed = canBeProcessed;
+        this.amount = amount;
     }
 
-//    public void approve(@PaymentStates.PartlyApproved(after = PaymentStates.Approved.class) Payment this) {
-    public void approve() /*@PaymentStates.Approved*/ {
-
+    public void send(@ApprovedPayment Payment this) {
+        System.out.println("Sending payment with amount: " + this.amount);
     }
 
-    public void partlyApprove(@PaymentStates.Valid(after = PaymentStates.PartlyApproved.class) Payment this) {
-
+    public void printStatus(@ValidPayment Payment this) {
+        System.out.println("Can this payment be processed: "+ this.canBeProcessed);
     }
 
-    public void send(@PaymentStates.Approved Payment this) {
-
+    public @ApprovedPayment Payment approve(@ValidPayment Payment this) {
+        return new Payment(true, this.amount);
     }
 
-    public static @PaymentStates.Valid Payment create() {
-        return new Payment();
+    public static @ValidPayment Payment createPayment(final Integer amount) {
+        return new Payment(true, amount);
     }
 }

@@ -28,6 +28,7 @@ public class EncryptExamples {
 
         example.encryptEncryptedData();
 
+
         final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
         ciphertexts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
         ciphertexts.add(example.encrypt(CONFIDENTIAL_PLAIN_DATA));
