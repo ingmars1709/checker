@@ -10,16 +10,21 @@ public class PaymentExamples {
     }
 
     private void run() {
-        @ValidPayment Payment payment = Payment.createPayment(10);
+        Payment payment = Payment.createPayment(10);
 
         payment.printStatus();
 
+        //
         payment.send();
 
         payment.approve().send();
 
-        final @ApprovedPayment Payment approvedPayment = payment.approve();
+        final Payment approvedPayment = payment.approve();
         approvedPayment.printStatus();
         approvedPayment.send();
+
+        //
+        payment.approve();
+        payment.send();
     }
 }

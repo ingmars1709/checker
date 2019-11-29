@@ -17,12 +17,14 @@ public class Payment {
         System.out.println("Sending payment with amount: " + this.amount);
     }
 
-    public void printStatus(@ValidPayment Payment this) {
+    public void printStatus(Payment this) {
         System.out.println("Can this payment be processed: "+ this.canBeProcessed);
     }
 
-    public @ApprovedPayment Payment approve(@ValidPayment Payment this) {
-        return new Payment(true, this.amount);
+    @SuppressWarnings("approvedpayment")
+    public @ApprovedPayment Payment approve(Payment this) {
+        this.canBeProcessed = true;
+        return this;
     }
 
     public static @ValidPayment Payment createPayment(final Integer amount) {
