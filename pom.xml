@@ -114,8 +114,8 @@
                                 <arg>-J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${javac.version}/javac-${javac.version}.jar</arg>
                                 <arg>-Alint=redundantNullComparison</arg>
                                 <arg>-Alint=forbidnonnullarraycomponents</arg>
-                                <!--<arg>-Aquals=com.infosupport.checker.qual.Encrypted,com.infosupport.checker.qual.PossiblyUnencrypted</arg>-->
-                                <arg>-Aquals=com.infosupport.checker.qual.ValidPayment,com.infosupport.checker.qual.ApprovedPayment</arg>
+                                <arg>-Aquals=com.infosupport.checker.qual.Encrypted,com.infosupport.checker.qual.PossiblyUnencrypted</arg>
+                                <!--<arg>-Aquals=com.infosupport.checker.qual.ValidPayment,com.infosupport.checker.qual.ApprovedPayment</arg>-->
                                 <arg>-Awarns</arg>
                             </compilerArgs>
                         </configuration>

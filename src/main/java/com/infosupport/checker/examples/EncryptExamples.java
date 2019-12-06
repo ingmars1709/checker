@@ -15,51 +15,8 @@ public class EncryptExamples {
     private static final byte[] CONFIDENTIAL_PLAIN_DATA_BYTES = CONFIDENTIAL_PLAIN_DATA.getBytes(UTF8);
     private static final byte KEY = 3;
 
-    public static void main(String[] args) {
-        EncryptExamples example = new EncryptExamples();
 
-        example.sendEncryptedData();
-
-        example.sendUnencryptedData();
-
-        example.decryptEncryptedData();
-
-        example.decryptDecryptedData();
-
-        example.encryptEncryptedData();
-
-
-        final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
-        ciphertexts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
-        ciphertexts.add(example.encrypt(CONFIDENTIAL_PLAIN_DATA));
-    }
-
-    private void sendEncryptedData() {
-        @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
-        send(ciphertext);
-    }
-
-    private void sendUnencryptedData() {
-        send(CONFIDENTIAL_PLAIN_DATA_BYTES);
-    }
-
-    private void send(final @Encrypted byte[] ciphertext) {
-        System.out.println("sent: " + Base64.getEncoder().encodeToString(ciphertext));
-    }
-
-    private void decryptEncryptedData() {
-        byte[] plaintext = decrypt(encrypt(CONFIDENTIAL_PLAIN_DATA));
-
-        System.out.println("decrypted plain text = " + new String(plaintext, UTF8));
-    }
-
-    private void decryptDecryptedData() {
-        byte[] wrong = decrypt(CONFIDENTIAL_PLAIN_DATA_BYTES);
-    }
-
-    private void encryptEncryptedData() {
-        byte[] twiceEncrypted = encrypt(new String(encrypt(CONFIDENTIAL_PLAIN_DATA), UTF8));
-    }
+    ////////////// EXAMPLE 1 //////////////
 
     @SuppressWarnings("encrypted") // type system does not inspect method body to see if actual encryption happens
     private @Encrypted byte[] encrypt(final String plaintext) {
@@ -77,5 +34,50 @@ public class EncryptExamples {
             outputBytes[i] = (byte) (inputBytes[i] ^ key);
         }
         return outputBytes;
+    }
+
+
+
+    ////////////// EXAMPLE 2 //////////////
+
+    private void addCipherTexts() {
+        final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
+        ciphertexts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
+        ciphertexts.add(encrypt(CONFIDENTIAL_PLAIN_DATA));
+    }
+
+
+
+    ////////////// EXAMPLE 3 //////////////
+
+    private void sendEncryptedData() {
+        @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
+        send(ciphertext);
+    }
+
+    private void sendUnencryptedData() {
+        send(CONFIDENTIAL_PLAIN_DATA_BYTES);
+    }
+
+    private void send(final @Encrypted byte[] ciphertext) {
+        System.out.println("sent: " + Base64.getEncoder().encodeToString(ciphertext));
+    }
+
+
+
+    ////////////// EXAMPLE 4 //////////////
+
+    private void decryptEncryptedData() {
+        byte[] plaintext = decrypt(encrypt(CONFIDENTIAL_PLAIN_DATA));
+
+        System.out.println("decrypted plain text = " + new String(plaintext, UTF8));
+    }
+
+    private void decryptDecryptedData() {
+        byte[] wrong = decrypt(CONFIDENTIAL_PLAIN_DATA_BYTES);
+    }
+
+    private void encryptEncryptedData() {
+        byte[] twiceEncrypted = encrypt(new String(encrypt(CONFIDENTIAL_PLAIN_DATA), UTF8));
     }
 }
