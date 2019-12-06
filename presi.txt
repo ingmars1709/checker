@@ -1,0 +1,37 @@
+examples of runtime exceptions
+
+
+example of checker framework messages
+
+
+checker framework
+	architecture
+
+	
+examples
+	Null
+	Optional
+	Tainting
+	Encrypt	
+		annotations 
+		subtyping checker
+			idea
+			annotation
+			configuration
+	Payment State (DDD)
+		this param
+			
+
+checker framework statistics
+
+
+Mobile Backend analysis
+
+
+comparison
+
+
+own ideas
+
+
+conclusion
