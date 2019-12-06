@@ -50,5 +50,12 @@ public class NullExamples {
         lazyInitialized.toString();
 
         //
+        compare(5,4);
+
     }
+
+    private static int compare(int x, int y) {
+        return x < y ? x : null;
+    }
+
 }
