@@ -1,8 +1,5 @@
 package com.infosupport.checker.examples;
 
-import com.infosupport.checker.qual.ApprovedPayment;
-import com.infosupport.checker.qual.ValidPayment;
-
 public class PaymentExamples {
 
     public static void main(String[] args) {
@@ -10,20 +7,27 @@ public class PaymentExamples {
     }
 
     private void run() {
+
+        ////////////// EXAMPLE 1 //////////////
         Payment payment = Payment.createPayment(10);
-
         payment.printStatus();
-
-        //
         payment.send();
 
+
+
+        ////////////// EXAMPLE 2 //////////////
         payment.approve().send();
 
+
+
+        ////////////// EXAMPLE 3 //////////////
         final Payment approvedPayment = payment.approve();
         approvedPayment.printStatus();
         approvedPayment.send();
 
-        //
+
+
+        ////////////// EXAMPLE 4 //////////////
         payment.approve();
         payment.send();
     }
