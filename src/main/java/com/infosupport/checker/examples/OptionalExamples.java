@@ -6,17 +6,24 @@ public class OptionalExamples {
 
     public static void main(String[] args) {
 
-        // Default is maybe present
+        ////////////// EXAMPLE 1 //////////////
+
         Optional<Integer> optionalIntegerWhichIsEmpty = Optional.empty();
         optionalIntegerWhichIsEmpty.get();
+
+
+        ////////////// EXAMPLE 2 //////////////
 
         Optional<Integer> optionalIntegerWhichIsNotEmpty = Optional.of(4);
         optionalIntegerWhichIsNotEmpty.get();
 
+
+        ////////////// EXAMPLE 3 //////////////
+
         // Safe use enforced by compiler
-        Optional<Integer> optionalIntegerSafeUse = Optional.empty();
-        if (optionalIntegerSafeUse.isPresent()) {
-            optionalIntegerSafeUse.get();
+        Optional<Integer> safeUseOfOptional = Optional.empty();
+        if (safeUseOfOptional.isPresent()) {
+            safeUseOfOptional.get();
         }
     }
 }
