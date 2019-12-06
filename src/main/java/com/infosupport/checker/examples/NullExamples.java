@@ -11,6 +11,8 @@ public class NullExamples {
 
     public static void main(String[] args) {
 
+        ////////////// EXAMPLE 1 //////////////
+
         Integer @NonNull [] numbers = null;
         @NonNull Object foo = null;
 
@@ -18,26 +20,27 @@ public class NullExamples {
         Object ref = null;
         ref.toString();
 
+        @Nullable Integer x = null;
+        x.toString();
+        x.toString();
+
+
+
+        ///////////// EXAMPLE 2 ////////////
+
         Map<String, Integer> myMap = new HashMap<>();
         myMap.put("foo", 1);
         myMap.put("bar", 2);
         myMap.put("baz", null);
 
-        //
+        Map<String, @Nullable Integer> myMap2 = new HashMap<>();
+        myMap2.put("foo", 1);
+        myMap2.put("bar", 2);
+        myMap2.put("baz", null);
 
-        @Nullable Integer x = null;
-        x.toString();
-        x.toString();
 
-        //
 
-        @NonNull Object neverNull = new Object();
-
-        if (neverNull == null) {
-            System.out.println("??");
-        }
-
-        //
+        ///////////// EXAMPLE 3 ////////////
 
         @MonotonicNonNull Object lazyInitialized = null;
 
@@ -49,7 +52,10 @@ public class NullExamples {
         lazyInitialized = null;
         lazyInitialized.toString();
 
-        //
+
+
+        ///////////// EXAMPLE 4 ////////////
+
         compare(5,4);
 
     }
