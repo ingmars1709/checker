@@ -22,7 +22,7 @@ public class Payment {
     }
 
     @SuppressWarnings("approvedpayment")
-    public @ApprovedPayment Payment approve(Payment this) {
+    public @ApprovedPayment Payment approve() {
         this.canBeProcessed = true;
         return this;
     }
