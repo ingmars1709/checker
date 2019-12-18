@@ -25,10 +25,7 @@ examples
 checker framework statistics
 
 
-Mobile Backend analysis
-
-
-comparison
+comparison with FindBugs
 
 
 own ideas
