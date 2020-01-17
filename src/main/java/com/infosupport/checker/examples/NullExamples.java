@@ -22,22 +22,22 @@ public class NullExamples {
 
         @Nullable Integer x = null;
         x.toString();
-        x.toString();
-
 
 
         ///////////// EXAMPLE 2 ////////////
 
-        Map<String, Integer> myMap = new HashMap<>();
+        Map<String, @NonNull Integer> myMap = new HashMap<>();
         myMap.put("foo", 1);
         myMap.put("bar", 2);
         myMap.put("baz", null);
+
+        myMap.get("baz").toString();
+        myMap.get("foo");
 
         Map<String, @Nullable Integer> myMap2 = new HashMap<>();
         myMap2.put("foo", 1);
         myMap2.put("bar", 2);
         myMap2.put("baz", null);
-
 
 
         ///////////// EXAMPLE 3 ////////////
@@ -51,7 +51,6 @@ public class NullExamples {
 
         lazyInitialized = null;
         lazyInitialized.toString();
-
 
 
         ///////////// EXAMPLE 4 ////////////
