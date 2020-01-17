@@ -13,16 +13,10 @@ public class NullExamples {
 
         ////////////// EXAMPLE 1 //////////////
 
-        Integer @NonNull [] numbers = null;
         @NonNull Object foo = null;
 
-        // @NonNull is default
         Object ref = null;
         ref.toString();
-
-        @Nullable Integer x = null;
-        x.toString();
-
 
         ///////////// EXAMPLE 2 ////////////
 
@@ -32,7 +26,11 @@ public class NullExamples {
         myMap.put("baz", null);
 
         myMap.get("baz").toString();
-        myMap.get("foo");
+        myMap.get("foo").toString(); // false positive
+
+        @SuppressWarnings("dereference.of.nullable")
+        String result = myMap.get("bar").toString(); // suppressed false positive
+
 
         Map<String, @Nullable Integer> myMap2 = new HashMap<>();
         myMap2.put("foo", 1);
@@ -56,11 +54,9 @@ public class NullExamples {
         ///////////// EXAMPLE 4 ////////////
 
         compare(5,4);
-
     }
 
     private static int compare(int x, int y) {
         return x < y ? x : null;
     }
-
 }
