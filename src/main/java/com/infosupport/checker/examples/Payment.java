@@ -8,18 +8,19 @@ public class Payment {
     private final Integer amount;
     private boolean canBeProcessed;
 
-    private Payment(final boolean canBeProcessed, final Integer amount) {
-        this.canBeProcessed = canBeProcessed;
+    private Payment(final Integer amount) {
         this.amount = amount;
     }
 
-    public void send(@ApprovedPayment Payment this) {
-        System.out.println("Sending payment with amount: " + this.amount);
+    public static @ValidPayment Payment createPayment(final Integer amount) {
+        return new Payment(amount);
     }
+
 
     public void printStatus(Payment this) {
         System.out.println("Can this payment be processed: "+ this.canBeProcessed);
     }
+
 
     @SuppressWarnings("approvedpayment")
     public @ApprovedPayment Payment approve() {
@@ -27,7 +28,8 @@ public class Payment {
         return this;
     }
 
-    public static @ValidPayment Payment createPayment(final Integer amount) {
-        return new Payment(true, amount);
+
+    public void send(@ApprovedPayment Payment this) {
+        System.out.println("Sending payment with amount: " + this.amount);
     }
 }

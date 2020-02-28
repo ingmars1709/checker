@@ -14,10 +14,8 @@ public class PaymentExamples {
         payment.send();
 
 
-
         ////////////// EXAMPLE 2 //////////////
         payment.approve().send();
-
 
 
         ////////////// EXAMPLE 3 //////////////
@@ -26,8 +24,7 @@ public class PaymentExamples {
         approvedPayment.send();
 
 
-
-        ////////////// EXAMPLE 4 //////////////
+        ////////////// EXAMPLE 4 ////////////// limitation of subtype checker
         payment.approve();
         payment.send();
     }
