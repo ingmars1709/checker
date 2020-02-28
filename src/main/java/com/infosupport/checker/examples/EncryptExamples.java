@@ -9,14 +9,15 @@ import java.util.List;
 
 public class EncryptExamples {
 
-    public static final Charset UTF8 = Charset.forName("UTF-8");
+    private static final Charset UTF8 = Charset.forName("UTF-8");
 
-    private static final String CONFIDENTIAL_PLAIN_DATA = "confidential data";
+    private static final String CONFIDENTIAL_PLAIN_DATA = "for your eyes only";
     private static final byte[] CONFIDENTIAL_PLAIN_DATA_BYTES = CONFIDENTIAL_PLAIN_DATA.getBytes(UTF8);
-    private static final byte KEY = 3;
+    private static final byte KEY = 42;
 
 
     ////////////// EXAMPLE 1 //////////////
+
 
     @SuppressWarnings("encrypted") // type system does not inspect method body to see if actual encryption happens
     private @Encrypted byte[] encrypt(final String plaintext) {
@@ -37,8 +38,8 @@ public class EncryptExamples {
     }
 
 
-
     ////////////// EXAMPLE 2 //////////////
+
 
     private void addCipherTexts() {
         final List<@Encrypted byte[]> ciphertexts = new ArrayList<>();
@@ -47,8 +48,12 @@ public class EncryptExamples {
     }
 
 
-
     ////////////// EXAMPLE 3 //////////////
+
+
+    private void send(final @Encrypted byte[] ciphertext) {
+        System.out.println("data sent: " + Base64.getEncoder().encodeToString(ciphertext));
+    }
 
     private void sendEncryptedData() {
         @Encrypted byte[] ciphertext = encrypt(CONFIDENTIAL_PLAIN_DATA);
@@ -59,13 +64,9 @@ public class EncryptExamples {
         send(CONFIDENTIAL_PLAIN_DATA_BYTES);
     }
 
-    private void send(final @Encrypted byte[] ciphertext) {
-        System.out.println("sent: " + Base64.getEncoder().encodeToString(ciphertext));
-    }
-
-
 
     ////////////// EXAMPLE 4 //////////////
+
 
     private void decryptEncryptedData() {
         byte[] plaintext = decrypt(encrypt(CONFIDENTIAL_PLAIN_DATA));
