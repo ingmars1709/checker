@@ -8,17 +8,20 @@ public class OptionalExamples {
 
         ////////////// EXAMPLE 1 //////////////
 
+
         Optional<Integer> optionalIntegerWhichIsEmpty = Optional.empty();
         optionalIntegerWhichIsEmpty.get();
 
 
         ////////////// EXAMPLE 2 //////////////
 
+
         Optional<Integer> optionalIntegerWhichIsNotEmpty = Optional.of(4);
         optionalIntegerWhichIsNotEmpty.get();
 
 
         ////////////// EXAMPLE 3 //////////////
+
 
         // Safe use enforced by compiler
         Optional<Integer> safeUseOfOptional = Optional.empty();

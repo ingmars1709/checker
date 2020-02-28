@@ -10,17 +10,19 @@ import java.util.Map;
 public class NullExamples {
 
     public static void main(String[] args) {
-
         ////////////// EXAMPLE 1 //////////////
+
 
         @NonNull Object foo = null;
 
         Object ref = null;
         ref.toString();
 
+
         ///////////// EXAMPLE 2 ////////////
 
-        Map<String, @NonNull Integer> myMap = new HashMap<>();
+
+        Map<String, @NonNull Integer> myMap = new HashMap<>(); //@NonNull is default qualifier
         myMap.put("foo", 1);
         myMap.put("bar", 2);
         myMap.put("baz", null);
@@ -33,12 +35,11 @@ public class NullExamples {
 
 
         Map<String, @Nullable Integer> myMap2 = new HashMap<>();
-        myMap2.put("foo", 1);
-        myMap2.put("bar", 2);
         myMap2.put("baz", null);
 
 
         ///////////// EXAMPLE 3 ////////////
+
 
         @MonotonicNonNull Object lazyInitialized = null;
 
@@ -52,6 +53,7 @@ public class NullExamples {
 
 
         ///////////// EXAMPLE 4 ////////////
+
 
         compare(5,4);
     }
