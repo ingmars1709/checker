@@ -47,6 +47,11 @@ public class EncryptExamples {
         ciphertexts.add(encrypt(CONFIDENTIAL_PLAIN_DATA));
     }
 
+    private void addPossiblyUnencryptedTexts() {
+        final List<byte[]> texts = new ArrayList<>();
+        texts.add(CONFIDENTIAL_PLAIN_DATA_BYTES);
+        texts.add(encrypt(CONFIDENTIAL_PLAIN_DATA));
+    }
 
     ////////////// EXAMPLE 3 //////////////
 

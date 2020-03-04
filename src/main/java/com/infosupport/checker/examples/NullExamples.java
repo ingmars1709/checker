@@ -27,7 +27,7 @@ public class NullExamples {
         myMap.put("bar", 2);
         myMap.put("baz", null);
 
-        myMap.get("baz").toString();
+        myMap.get("baz").toString(); // get() is @Nullable in annotated Map interface
         myMap.get("foo").toString(); // false positive
 
         @SuppressWarnings("dereference.of.nullable")
