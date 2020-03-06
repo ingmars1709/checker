@@ -12,6 +12,7 @@ public class Payment {
         this.amount = amount;
     }
 
+
     public static @ValidPayment Payment createPayment(final Integer amount) {
         return new Payment(amount);
     }
@@ -25,6 +26,12 @@ public class Payment {
     @SuppressWarnings("approvedpayment")
     public @ApprovedPayment Payment approve() {
         this.canBeProcessed = true;
+        return this;
+    }
+
+
+    public @ValidPayment Payment reject(@ApprovedPayment Payment this) {
+        this.canBeProcessed = false;
         return this;
     }
 
