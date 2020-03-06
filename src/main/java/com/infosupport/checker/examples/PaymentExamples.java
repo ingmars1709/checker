@@ -27,5 +27,11 @@ public class PaymentExamples {
         ////////////// EXAMPLE 4 ////////////// limitation of subtyping checker
         payment.approve();
         payment.send();
+
+
+        ////////////// EXAMPLE 5 //////////////
+        payment = payment.approve(); // transferring the state
+        payment.send();
+
     }
 }
